@@ -12,7 +12,23 @@ brew update
 
 echo ""
 echo "Installing packages..."
+
+if ! command -v brew >/dev/null 2>&1; then
+    echo "Homebrew non è installato."
+    exit 1
+fi
+
 brew bundle
+
+echo ""
+echo "Verifica installazione Python..."
+
+if ! command -v python3 >/dev/null 2>&1; then
+    echo "ERRORE: Python non installato."
+    exit 1
+fi
+
+echo "Python OK"
 
 echo ""
 echo "Starting PostgreSQL..."
